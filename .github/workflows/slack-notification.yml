@@ -26,8 +26,12 @@ jobs:
               - color: "#dbab09"
                 fields:
                   - title: "Status"
-                    short: false
+                    short: true
                     value: "In Progress"
+                  - title: "Duration"
+                    short: true
+                    value: "0 seconds"
+                footer: "Deployment initiated"
       - name: Countdown until launch
         run: sleep 10
       - name: Update the original message with success
@@ -40,8 +44,11 @@ jobs:
             ts: "${{ steps.launch_sequence.outputs.ts }}"
             text: "Deployment finished! :rocket:"
             attachments:
-              - color: "7F00FF"
+              - color: "#66FF00"
                 fields:
                   - title: "Status"
                     short: false
                     value: "Completed"
+                  - title: "Duration"
+                    short: false
+                    value: "10 seconds"
