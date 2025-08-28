@@ -53,6 +53,7 @@ jobs:
                   - title: "Duration"
                     short: true
                     value: "5 seconds"
+                footer: ""
       - name: Countdown until launch
         run: sleep 5
       - name: Update the original message with success
