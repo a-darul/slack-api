@@ -34,7 +34,7 @@ jobs:
                     value: "0 seconds"
                 footer: "Deployment initiated"
       - name: Countdown until launch
-        run: sleep 5
+        run: sleep 2
       - name: Update first
         uses: slackapi/slack-github-action@v2.1.1
         with:
@@ -49,13 +49,13 @@ jobs:
                 fields:
                   - title: "Status"
                     short: true
-                    value: "Working"
+                    value: "Working\nSecond\nThird"
                   - title: "Duration"
                     short: true
                     value: "5 seconds"
                 footer: ""
       - name: Countdown until launch
-        run: sleep 5
+        run: sleep 7
       - name: Update the original message with success
         uses: slackapi/slack-github-action@v2.1.1
         with:
