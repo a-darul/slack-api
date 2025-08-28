@@ -70,7 +70,7 @@ jobs:
                 fields:
                   - title: "Status"
                     short: true
-                    value: "Completed"
+                    value: "Completed\nAll done!\nGreat"
                   - title: "Duration"
                     short: true
                     value: "10 seconds"
