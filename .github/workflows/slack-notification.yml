@@ -7,6 +7,7 @@ on:
 
 env:
   SLACK_CHANNEL: "C09CHP3SBHA"
+  TEXT: "text inside variable"
 
 jobs:
   notify:
@@ -42,6 +43,7 @@ jobs:
           payload: |
             channel: ${{ env.SLACK_CHANNEL }}
             ts: "${{ steps.launch_sequence.outputs.ts }}"
+            text: if [[ -n "${{ env.TEXT }}" ]]; then echo "${{ env.TEXT }}"; fi
             attachments:
               - color: "#aa17a8ff"
                 fields:
@@ -61,7 +63,7 @@ jobs:
           payload: |
             channel: ${{ env.SLACK_CHANNEL }}
             ts: "${{ steps.launch_sequence.outputs.ts }}"
-            text: "Deployment finished! :rocket:"
+            text: "${{ env.TEXT == 'text' && env.TEXT || 'Deployment finished :rocket:' }}"
             attachments:
               - color: "#66FF00"
                 fields:
