@@ -21,13 +21,16 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: ${{ env.SLACK_CHANNEL }}
-            text: "Deployment started :eyes:"
-            attachments:
-              - color: "dbab09"
-                fields:
-                  - title: "Status"
-                    short: true
-                    value: "In Progress"
+            text: "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+            blocks:
+                - type: "section"
+                text:
+                    type: "mrkdwn"
+                    text: "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                - type: "section"
+                text:
+                    type: "mrkdwn"
+                    text: "Section kedua"
       - name: Countdown until launch
         run: sleep 10
       - name: Update the original message with success
