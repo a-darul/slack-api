@@ -23,7 +23,7 @@ jobs:
             channel: ${{ env.SLACK_CHANNEL }}
             text: "Deployment started :eyes:"
             attachments:
-              - color: "dbab09"
+              - color: "#dbab09"
                 fields:
                   - title: "Status"
                     short: false
@@ -40,7 +40,7 @@ jobs:
             ts: "${{ steps.launch_sequence.outputs.ts }}"
             text: "Deployment finished! :rocket:"
             attachments:
-              - color: "28a745"
+              - color: "7F00FF"
                 fields:
                   - title: "Status"
                     short: false
