@@ -33,7 +33,26 @@ jobs:
                     value: "0 seconds"
                 footer: "Deployment initiated"
       - name: Countdown until launch
-        run: sleep 10
+        run: sleep 5
+      - name: Update first
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          method: chat.update
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ env.SLACK_CHANNEL }}
+            ts: "${{ steps.launch_sequence.outputs.ts }}"
+            attachments:
+              - color: "#aa17a8ff"
+                fields:
+                  - title: "Status"
+                    short: true
+                    value: "Working"
+                  - title: "Duration"
+                    short: true
+                    value: "5 seconds"
+      - name: Countdown until launch
+        run: sleep 5
       - name: Update the original message with success
         uses: slackapi/slack-github-action@v2.1.1
         with:
@@ -47,8 +66,8 @@ jobs:
               - color: "#66FF00"
                 fields:
                   - title: "Status"
-                    short: false
+                    short: true
                     value: "Completed"
                   - title: "Duration"
-                    short: false
+                    short: true
                     value: "10 seconds"
